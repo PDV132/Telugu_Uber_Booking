@@ -1,0 +1,126 @@
+                         ┌────────────────────────┐
+                         │  User Voice Input      │
+                         │  (Telugu, Hindi, EN)  │
+                         └─────────┬────────────┘
+                                   │
+                                   ▼
+                      ┌────────────────────────────┐
+                      │  Speech-to-Text Tool       │
+                      │  (Azure / Google ASR)      │
+                      └─────────┬──────────────────┘
+                                   │ Text
+                                   ▼
+                      ┌────────────────────────────┐
+                      │  Language Detection Tool    │
+                      │  (LangDetect / fastText)    │
+                      └─────────┬──────────────────┘
+                         Telugu? │ No → Continue in EN
+                                 ▼ Yes
+                      ┌────────────────────────────┐
+                      │ Translation Tool            │
+                      │ (Azure / Google Translator) │
+                      └─────────┬──────────────────┘
+                                   ▼
+                      ┌────────────────────────────┐
+                      │ Intent Recognition Tool     │
+                      │ (GPT-4o-mini / Rasa NLU)   │
+                      └─────────┬──────────────────┘
+                                   ▼
+                      ┌────────────────────────────┐
+                      │ Entity Extraction Tool      │
+                      │ (LangChain / SpaCy NER)    │
+                      └─────────┬──────────────────┘
+                                   ▼
+                     ┌─────────────────────────────┐
+                     │ Check Consent Tool          │
+                     │ (User approval for booking) │
+                     └─────────┬──────────────────┘
+                                   ▼
+                   ┌─────────────────────────────┐
+                   │  Simulated Uber Booking Tool │
+                   │  (Async book_ride)          │
+                   └─────────┬──────────────────┘
+                                   │ Ride Object
+                                   ▼
+                 ┌──────────────────────────────┐
+                 │ Async Ride Monitoring Agent   │
+                 │ (Geo-fencing / Safety Checks)│
+                 └─────────┬────────────────────┘
+                   Alerts / Notifications
+                    ┌─────────┴─────────────┐
+                    ▼                       ▼
+           ┌───────────────┐        ┌──────────────┐
+           │ Telegram API  │        │ Twilio SMS   │
+           │ User updates  │        │ Emergency    │
+           └───────────────┘        └──────────────┘
+                                   ▲
+                                   │
+                         ┌──────────────────────────┐
+                         │  LangChain ReAct Agent   │
+                         │  Orchestrates all steps  │
+                         │  Memory & reasoning      │
+                         └──────────────────────────┘
+
+
+
+Features Highlighted
+
+        Dynamic Agent Reasoning: LangChain ReAct decides which tool to use at each step.
+
+        Hybrid Async Flow:
+
+        Booking is simulated.
+
+        Monitoring runs in background asynchronously.
+
+        Consent & Privacy Enforcement: User approves before translation or ride booking.
+
+        Notifications: Telegram & Twilio handle updates and emergencies.
+
+        Modular & Extensible: You can swap ASR, translation, NER, or notifications without changing the core agent.
+
+
+If you want, I can also create a color-coded diagram showing:
+
+        Blue: AI/NLP tools
+
+        Green: Async/Background agents
+
+        Orange: External APIs/notifications
+
+        Red: Consent & safety enforcement
+
+This will be presentation-ready for your agentic AI project.
+
+
+What Happens During Simulation
+
+                Speech-to-text: Converts “voice_input.wav” → text (simulated).
+
+                Language detection: Determines Telugu / English / Hindi.
+
+                Translation: Telugu → English if needed.
+
+                Intent recognition: Determines if the user wants to “book”, “cancel”, or “schedule”.
+
+                Entity extraction: Pickup/drop, time, payment mode.
+
+                Simulated booking: Prints ride object (no real Uber call).
+
+                Async monitoring:
+
+                Monitors route every few seconds.
+
+                Prints “on-route” or “off-route” alerts.
+
+                Notifications: Simulates Telegram and SMS messages.
+
+Safety Features
+
+        No real Uber API calls are made.
+
+        All ride objects are simulated.
+
+        Async monitoring runs in background but only prints/logs alerts.
+
+        Consent checks are simulated.
